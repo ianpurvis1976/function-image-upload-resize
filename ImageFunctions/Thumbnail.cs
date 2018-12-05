@@ -28,10 +28,6 @@ using System.Threading.Tasks;
 
 namespace ImageFunctions
 {
-    public static async Task Run(
-        [EventGridTrigger]EventGridEvent eventGridEvent,
-        [Blob("{data.url}", FileAccess.Read, Connection = "myblobstorage_STORAGE")] Stream input,
-        ILogger log)
         
     public static class Thunbnail
     {

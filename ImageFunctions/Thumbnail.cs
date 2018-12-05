@@ -89,7 +89,7 @@ namespace ImageFunctions
                     if (encoder != null)
                     {
                         var thumbnailWidth = 100;
-                        var thumbContainerName = "thumbnails");
+                        var thumbContainerName = "thumbnails";
                         var storageAccount = CloudStorageAccount.Parse(BLOB_STORAGE_CONNECTION_STRING);
                         var blobClient = storageAccount.CreateCloudBlobClient();
                         var container = blobClient.GetContainerReference(thumbContainerName);

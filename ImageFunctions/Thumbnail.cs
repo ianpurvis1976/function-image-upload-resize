@@ -75,7 +75,7 @@ namespace ImageFunctions
         [FunctionName("Thumbnail")]
         public static async Task Run(
             [EventGridTrigger]EventGridEvent eventGridEvent,
-            [Blob("{data.url}", FileAccess.Read)] Stream input,
+            [Blob("{data.url}", FileAccess.Read) Connection = "myblobstorage_STORAGE")] Stream input,
             ILogger log)
         {
             try
@@ -88,8 +88,8 @@ namespace ImageFunctions
 
                     if (encoder != null)
                     {
-                        var thumbnailWidth = Convert.ToInt32(Environment.GetEnvironmentVariable("THUMBNAIL_WIDTH"));
-                        var thumbContainerName = Environment.GetEnvironmentVariable("THUMBNAIL_CONTAINER_NAME");
+                        var thumbnailWidth = 100;
+                        var thumbContainerName = Environment.GetEnvironmentVariable("myContainerName");
                         var storageAccount = CloudStorageAccount.Parse(BLOB_STORAGE_CONNECTION_STRING);
                         var blobClient = storageAccount.CreateCloudBlobClient();
                         var container = blobClient.GetContainerReference(thumbContainerName);
